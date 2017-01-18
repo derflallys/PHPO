@@ -1,5 +1,5 @@
 <?php
-
+namespace Tutoriel;
 /**
  * Created by PhpStorm.
  * User: ABOUBACAR

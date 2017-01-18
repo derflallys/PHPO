@@ -6,7 +6,7 @@
  * Date: 12/01/2017
  * Time: 21:10
  */
-class text
+class Text
 {
 
     private static $suffix=" €";
