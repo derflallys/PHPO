@@ -1,6 +1,13 @@
 <?php
+use app\Table\Article;
+use app\Table\Categorie;
+$data=Article::find($_GET['id']);
+if ($data==null)
+{
+    \app\App::notFound();
+}
 
-$data=\app\App::getDb()->prepare('SELECT * from articles WHERE  id=?',[$_GET['id']],'\app\Table\Article');
 //var_dump($data);
-echo "<h2>".$data[0]->titre."</h2>";
-echo "<p>".$data[0]->contenu."</p>";
+echo "<h2>".$data->titre."</h2>";
+echo "<p><em>".$data->categorie."</em></p>";
+echo "<p>".$data->contenu."</p>";

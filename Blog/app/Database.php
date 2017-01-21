@@ -34,19 +34,37 @@ class Database
         } 
             return $this->pdo;
     }
-    public function query($stat,$class)
+    public function query($stat,$class,$one=false)
     {
         $req= $this->getPDO()->query($stat);
-        $data=$req->fetchAll(PDO::FETCH_CLASS,$class);
+        $req->setFetchMode(PDO::FETCH_CLASS,$class);
+        if($one)
+        {
+            $data=$req->fetch();
+        }
+        else
+        {
+            $data=$req->fetchAll();
+        }
         return $data;
     }
 
-    public function prepare($stat,$value,$class)
+    public function prepare($stat,$value,$class,$one=false)
     {
         //setfetchmode pour choisir le mode de fetch  genre pdo fetch class or obj kw
         $req = $this->getPDO()->prepare($stat);
-      $req->execute($value);
-       $datas=  $req->fetchAll(PDO::FETCH_CLASS,$class);
-        return $datas;
+        $req->execute($value);
+
+        $req->setFetchMode(PDO::FETCH_CLASS,$class);
+
+        if($one)
+        {
+            $data=$req->fetch();
+        }
+        else
+        {
+            $data=$req->fetchAll();
+        }
+        return $data;
     }
 }
