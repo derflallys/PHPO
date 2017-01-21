@@ -69,7 +69,8 @@ class Article extends Table
     public static function getLast()
     {
         return self::query('SELECT a.id, a.titre,contenu,c.titre as categorie from articles a 
-              LEFT JOIN categorie c on id_categorie = c.id');
+              LEFT JOIN categorie c on id_categorie = c.id
+              ORDER BY a.date DESC ');
     }
 
     /**

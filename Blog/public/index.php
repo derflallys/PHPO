@@ -9,6 +9,13 @@
 require '../app/Autoloader.php';
 \app\Autoloader::register();
 
+
+$config =  \app\Config::getInstance();
+$app = \app\App::getDb();
+var_dump($app);
+
+/*
+
 if (isset($_GET['p']))
 {
     $p=$_GET['p'];
@@ -35,4 +42,4 @@ elseif($p=='categorie')
     require '../pages/categorie.php';
 }
 $content=ob_get_clean();
-require '../pages/template/default.php';
+require '../pages/template/default.php';*/
