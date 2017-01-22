@@ -1,5 +1,5 @@
 <?php
-namespace app;
+namespace core;
 /**
  * Created by PhpStorm.
  * User: ABOUBACAR

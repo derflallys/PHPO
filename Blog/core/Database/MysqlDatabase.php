@@ -6,11 +6,11 @@
  * Time: 23:49
  */
 
-namespace app;
+namespace core\Database;
 use \PDO;
 
 
-class Database
+class MysqlDatabase extends  Database
 {
     private $dbname;
     private $dbuser;
@@ -34,10 +34,18 @@ class Database
         } 
             return $this->pdo;
     }
-    public function query($stat,$class,$one=false)
+    public function query($stat,$class=null,$one=false)
     {
         $req= $this->getPDO()->query($stat);
-        $req->setFetchMode(PDO::FETCH_CLASS,$class);
+
+        if ($class==null)
+        {
+            $req->setFetchMode(PDO::FETCH_OBJ);
+        }
+        else
+        {
+            $req->setFetchMode(PDO::FETCH_CLASS,$class);
+        }
         if($one)
         {
             $data=$req->fetch();
